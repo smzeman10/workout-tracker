@@ -8,32 +8,31 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: #F7F3EE;
+    background: #F0EDEA;
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    color: #2C2C2C;
+    color: #1A1A1A;
     padding: 20px 18px 40px;
     max-width: 420px;
     margin: 0 auto;
   }
-
   h1 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: 26px;
-    letter-spacing: 0.04em;
+    font-size: 34px;
+    letter-spacing: 0.02em;
     color: #1A1A1A;
     margin-bottom: 2px;
   }
   .week-label {
     font-size: 10px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #9A8C7E;
-    margin-bottom: 18px;
+    color: #666;
+    margin-bottom: 20px;
   }
 
-  /* GOAL ACHIEVED BANNER */
+  /* GOAL BANNER */
   .goal-banner {
     display: none;
     background: #2D6A2D;
@@ -43,7 +42,7 @@
     margin-bottom: 16px;
   }
   .goal-banner.show { display: block; }
-  .goal-banner-emoji { font-size: 32px; margin-bottom: 6px; }
+  .goal-banner-emoji { font-size: 30px; margin-bottom: 6px; }
   .goal-banner-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
@@ -53,12 +52,12 @@
   }
   .goal-banner-sub { font-size: 11px; color: #A8D4A8; letter-spacing: 0.06em; }
 
-  /* MAIN RING / PROGRESS */
+  /* MAIN CARD */
   .main-card {
     background: #fff;
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 18px 16px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
   }
   .main-header {
     display: flex;
@@ -68,9 +67,9 @@
   }
   .main-label {
     font-size: 10px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #7A6A5A;
+    color: #666;
     font-weight: 500;
   }
   .main-mins {
@@ -79,18 +78,23 @@
     color: #1A1A1A;
     line-height: 1;
   }
-  .main-mins span { font-size: 13px; color: #9A8C7E; font-family: 'DM Sans', sans-serif; font-weight: 300; }
+  .main-mins span {
+    font-size: 14px;
+    color: #888;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
   .big-bar-bg {
-    background: #F0EAE2;
+    background: #EDE8E2;
     border-radius: 20px;
-    height: 10px;
+    height: 8px;
     overflow: hidden;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .big-bar-fill {
     height: 100%;
     border-radius: 20px;
-    background: #6A9A6A;
+    background: #8AAA8A;
     transition: width 0.4s ease;
   }
   .big-bar-fill.complete { background: #2D6A2D; }
@@ -102,73 +106,76 @@
     gap: 8px;
   }
   .breakdown-item {
-    background: #F7F3EE;
+    background: #F5F2EF;
     border-radius: 10px;
     padding: 10px 10px 8px;
   }
   .breakdown-type {
     font-size: 9px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #9A8C7E;
+    color: #888;
     margin-bottom: 4px;
   }
   .breakdown-mins {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
-    color: #2C2C2C;
+    color: #1A1A1A;
     line-height: 1;
   }
-  .breakdown-mins span { font-size: 10px; color: #9A8C7E; font-family: 'DM Sans', sans-serif; }
+  .breakdown-mins span {
+    font-size: 10px;
+    color: #888;
+    font-family: 'DM Sans', sans-serif;
+  }
 
   /* SECTION TITLE */
   .section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #7A6A5A;
-    border-bottom: 0.5px solid #D4C9BC;
+    color: #333;
+    border-bottom: 1px solid #CCC;
     padding-bottom: 5px;
     margin-bottom: 10px;
   }
 
-  /* LOG BUTTONS */
+  /* BUTTONS */
   .btn-group-label {
     font-size: 9px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #9A8C7E;
-    margin-bottom: 6px;
-    margin-top: 12px;
+    color: #888;
+    margin-bottom: 7px;
+    margin-top: 14px;
   }
   .btn-group-label:first-child { margin-top: 0; }
   .buttons-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 7px;
-    margin-bottom: 4px;
   }
   .log-btn {
     background: #fff;
-    border: 1px solid #E0D8CF;
-    border-radius: 10px;
-    padding: 10px 10px;
+    border: 1px solid #DDD;
+    border-radius: 12px;
+    padding: 12px 12px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
-    color: #2C2C2C;
+    color: #1A1A1A;
     cursor: pointer;
     text-align: left;
-    transition: all 0.15s ease;
+    transition: all 0.12s ease;
     line-height: 1.3;
   }
-  .log-btn:active { background: #EDE8E1; border-color: #C4A882; }
+  .log-btn:active { background: #EDE8E2; border-color: #AAA; }
   .btn-mins {
     display: block;
-    font-size: 10px;
-    color: #9A8C7E;
+    font-size: 11px;
+    color: #888;
     margin-top: 1px;
   }
 
@@ -176,30 +183,42 @@
   .log-card {
     background: #fff;
     border-radius: 12px;
-    padding: 12px 13px;
-    margin-bottom: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
     min-height: 50px;
   }
-  .log-empty { font-size: 12px; color: #B0A396; font-style: italic; text-align: center; padding: 8px 0; }
+  .log-empty {
+    font-size: 12px;
+    color: #AAA;
+    font-style: italic;
+    text-align: center;
+    padding: 8px 0;
+  }
   .log-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 0;
-    border-bottom: 0.5px solid #F0EAE2;
+    padding: 7px 0;
+    border-bottom: 0.5px solid #EEE;
     font-size: 12px;
   }
   .log-item:last-child { border-bottom: none; }
-  .log-item-left { color: #2C2C2C; }
-  .log-item-type { font-size: 9px; color: #9A8C7E; text-transform: uppercase; letter-spacing: 0.07em; margin-top: 1px; }
+  .log-item-name { color: #1A1A1A; font-size: 13px; }
+  .log-item-type {
+    font-size: 9px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 1px;
+  }
   .log-item-right { display: flex; align-items: center; gap: 10px; }
-  .log-item-mins { font-size: 11px; color: #6A9A6A; font-weight: 500; }
+  .log-item-mins { font-size: 12px; color: #5A8A5A; font-weight: 500; }
   .remove-btn {
     background: none;
     border: none;
-    color: #C4B8A8;
+    color: #BBB;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     padding: 0 2px;
     line-height: 1;
   }
@@ -208,17 +227,18 @@
   .reset-btn {
     width: 100%;
     background: none;
-    border: 1px solid #D4C9BC;
-    border-radius: 10px;
-    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 12px;
+    padding: 12px;
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #9A8C7E;
+    color: #888;
     cursor: pointer;
-    margin-top: 4px;
+    margin-top: 6px;
   }
+  .reset-btn:active { background: #EDE8E2; }
 </style>
 </head>
 <body>
@@ -263,35 +283,36 @@
 
 <div class="btn-group-label">Cardio</div>
 <div class="buttons-grid">
-  <button class="log-btn" onclick="log('Walk 10 min', 'cardio', 30)">Walk<span class="btn-mins">10 min</span></button>
-  <button class="log-btn" onclick="log('Walk 30 min', 'cardio', 30)">Walk<span class="btn-mins">30 min</span></button>
-  <button class="log-btn" onclick="log('Walk 1 hr', 'cardio', 60)">Walk<span class="btn-mins">60 min</span></button>
-  <button class="log-btn" onclick="log('Run 30 min', 'cardio', 30)">Run<span class="btn-mins">30 min</span></button>
-  <button class="log-btn" onclick="log('Run 45 min', 'cardio', 45)">Run<span class="btn-mins">45 min</span></button>
+  <button class="log-btn" onclick="log('Walk', 'cardio', 10)">Walk<span class="btn-mins">10 min</span></button>
+  <button class="log-btn" onclick="log('Walk', 'cardio', 30)">Walk<span class="btn-mins">30 min</span></button>
+  <button class="log-btn" onclick="log('Walk', 'cardio', 60)">Walk<span class="btn-mins">60 min</span></button>
+  <button class="log-btn" onclick="log('Run', 'cardio', 10)">Run<span class="btn-mins">10 min</span></button>
+  <button class="log-btn" onclick="log('Run', 'cardio', 30)">Run<span class="btn-mins">30 min</span></button>
+  <button class="log-btn" onclick="log('Run', 'cardio', 45)">Run<span class="btn-mins">45 min</span></button>
 </div>
 
 <div class="btn-group-label">Strength</div>
 <div class="buttons-grid">
-  <button class="log-btn" onclick="log('Lifting 20 min', 'strength', 20)">Lifting<span class="btn-mins">20 min</span></button>
-  <button class="log-btn" onclick="log('Lifting 30 min', 'strength', 30)">Lifting<span class="btn-mins">30 min</span></button>
-  <button class="log-btn" onclick="log('Lifting 45 min', 'strength', 45)">Lifting<span class="btn-mins">45 min</span></button>
-  <button class="log-btn" onclick="log('Lifting 60 min', 'strength', 60)">Lifting<span class="btn-mins">60 min</span></button>
+  <button class="log-btn" onclick="log('Lifting', 'strength', 20)">Lifting<span class="btn-mins">20 min</span></button>
+  <button class="log-btn" onclick="log('Lifting', 'strength', 30)">Lifting<span class="btn-mins">30 min</span></button>
+  <button class="log-btn" onclick="log('Lifting', 'strength', 45)">Lifting<span class="btn-mins">45 min</span></button>
+  <button class="log-btn" onclick="log('Lifting', 'strength', 60)">Lifting<span class="btn-mins">60 min</span></button>
 </div>
 
 <div class="btn-group-label">Dance Class</div>
 <div class="buttons-grid">
-  <button class="log-btn" onclick="log('Dance Class 1 hr', 'both', 60)">Dance Class<span class="btn-mins">60 min</span></button>
-  <button class="log-btn" onclick="log('Dance Class 1.5 hr', 'both', 90)">Dance Class<span class="btn-mins">90 min</span></button>
+  <button class="log-btn" onclick="log('Dance Class', 'both', 60)">Dance Class<span class="btn-mins">60 min</span></button>
+  <button class="log-btn" onclick="log('Dance Class', 'both', 90)">Dance Class<span class="btn-mins">90 min</span></button>
 </div>
 
 <div class="btn-group-label">Stretching / Mobility (optional)</div>
 <div class="buttons-grid">
-  <button class="log-btn" onclick="log('Mobility 10 min', 'stretch', 10)">Mobility<span class="btn-mins">10 min</span></button>
-  <button class="log-btn" onclick="log('Mobility 15 min', 'stretch', 15)">Mobility<span class="btn-mins">15 min</span></button>
+  <button class="log-btn" onclick="log('Mobility', 'stretch', 10)">Mobility<span class="btn-mins">10 min</span></button>
+  <button class="log-btn" onclick="log('Mobility', 'stretch', 15)">Mobility<span class="btn-mins">15 min</span></button>
 </div>
 
-<!-- ACTIVITY LOG -->
-<div class="section-title" style="margin-top:16px">This Week</div>
+<!-- THIS WEEK -->
+<div class="section-title" style="margin-top:20px">This Week</div>
 <div class="log-card" id="log-list">
   <div class="log-empty">No activity logged yet</div>
 </div>
@@ -299,17 +320,7 @@
 <button class="reset-btn" id="reset-btn">Reset Week</button>
 
 <script>
-  const KEY = 'wt_v3';
-
-  function getMonday() {
-    const d = new Date();
-    const day = d.getDay();
-    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-    const m = new Date(d);
-    m.setDate(diff);
-    m.setHours(0,0,0,0);
-    return m.toISOString().split('T')[0];
-  }
+  const KEY = 'movement_tracker_v4';
 
   function getWeekLabel() {
     const d = new Date();
@@ -318,18 +329,14 @@
     const mon = new Date(d); mon.setDate(diff);
     const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
     const o = { month: 'short', day: 'numeric' };
-    return 'Week of ' + mon.toLocaleDateString('en-US', o) + ' – ' + sun.toLocaleDateString('en-US', o);
+    return 'Week of ' + mon.toLocaleDateString('en-US', o) + ' \u2013 ' + sun.toLocaleDateString('en-US', o);
   }
 
   function load() {
     try {
       const raw = localStorage.getItem(KEY);
-      const data = raw ? JSON.parse(raw) : null;
-      if (!data || data.week !== getMonday()) {
-        return { week: getMonday(), activities: [] };
-      }
-      return data;
-    } catch(e) { return { week: getMonday(), activities: [] }; }
+      return raw ? JSON.parse(raw) : { activities: [] };
+    } catch(e) { return { activities: [] }; }
   }
 
   function save(data) {
@@ -350,18 +357,15 @@
     render();
   }
 
-  function reset() {
-    {
-      save({ week: getMonday(), activities: [] });
-      render();
-    }
-  }
+  document.getElementById('reset-btn').onclick = function() {
+    save({ activities: [] });
+    render();
+  };
 
   function render() {
     document.getElementById('week-label').textContent = getWeekLabel();
 
-    const data = load();
-    const acts = data.activities;
+    const acts = load().activities;
 
     let cardio = 0, strength = 0, stretch = 0;
     acts.forEach(a => {
@@ -386,8 +390,7 @@
     bar.style.width = pct + '%';
     bar.className = 'big-bar-fill' + (done ? ' complete' : '');
 
-    const banner = document.getElementById('goal-banner');
-    banner.className = 'goal-banner' + (done ? ' show' : '');
+    document.getElementById('goal-banner').className = 'goal-banner' + (done ? ' show' : '');
 
     const list = document.getElementById('log-list');
     if (acts.length === 0) {
@@ -395,12 +398,12 @@
     } else {
       list.innerHTML = acts.map(a =>
         '<div class="log-item">' +
-          '<div class="log-item-left">' +
-            '<div>' + a.name + '</div>' +
+          '<div>' +
+            '<div class="log-item-name">' + a.name + ' \u00b7 ' + a.mins + ' min</div>' +
             '<div class="log-item-type">' + (a.type === 'both' ? 'cardio + strength' : a.type) + '</div>' +
           '</div>' +
           '<div class="log-item-right">' +
-            '<span class="log-item-mins">+' + a.mins + ' min</span>' +
+            '<span class="log-item-mins">+' + a.mins + '</span>' +
             '<button class="remove-btn" onclick="remove(' + a.id + ')">×</button>' +
           '</div>' +
         '</div>'
@@ -408,7 +411,6 @@
     }
   }
 
-  document.getElementById('reset-btn').addEventListener('click', reset);
   render();
 </script>
 </body>

@@ -31,7 +31,7 @@
     color: #666;
     margin-bottom: 20px;
   }
-
+ 
   /* GOAL BANNER */
   .goal-banner {
     display: none;
@@ -51,7 +51,7 @@
     margin-bottom: 2px;
   }
   .goal-banner-sub { font-size: 11px; color: #A8D4A8; letter-spacing: 0.06em; }
-
+ 
   /* MAIN CARD */
   .main-card {
     background: #fff;
@@ -98,7 +98,7 @@
     transition: width 0.4s ease;
   }
   .big-bar-fill.complete { background: #2D6A2D; }
-
+ 
   /* BREAKDOWN */
   .breakdown {
     display: grid;
@@ -128,7 +128,7 @@
     color: #888;
     font-family: 'DM Sans', sans-serif;
   }
-
+ 
   /* SECTION TITLE */
   .section-title {
     font-family: 'Cormorant Garamond', serif;
@@ -141,7 +141,7 @@
     padding-bottom: 5px;
     margin-bottom: 10px;
   }
-
+ 
   /* BUTTONS */
   .btn-group-label {
     font-size: 9px;
@@ -178,7 +178,7 @@
     color: #888;
     margin-top: 1px;
   }
-
+ 
   /* ACTIVITY LOG */
   .log-card {
     background: #fff;
@@ -222,7 +222,7 @@
     padding: 0 2px;
     line-height: 1;
   }
-
+ 
   /* RESET */
   .reset-btn {
     width: 100%;
@@ -242,17 +242,17 @@
 </style>
 </head>
 <body>
-
+ 
 <h1>Movement Tracker</h1>
 <div class="week-label" id="week-label">—</div>
-
+ 
 <!-- GOAL BANNER -->
 <div class="goal-banner" id="goal-banner">
   <div class="goal-banner-emoji">🌿</div>
   <div class="goal-banner-title">150 Minutes Done</div>
   <div class="goal-banner-sub">Weekly goal complete</div>
 </div>
-
+ 
 <!-- MAIN PROGRESS -->
 <div class="main-card">
   <div class="main-header">
@@ -277,10 +277,10 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- LOG -->
 <div class="section-title">Log Activity</div>
-
+ 
 <div class="btn-group-label">Cardio</div>
 <div class="buttons-grid">
   <button class="log-btn" onclick="log('Walk', 'cardio', 10)">Walk<span class="btn-mins">10 min</span></button>
@@ -290,7 +290,7 @@
   <button class="log-btn" onclick="log('Run', 'cardio', 30)">Run<span class="btn-mins">30 min</span></button>
   <button class="log-btn" onclick="log('Run', 'cardio', 45)">Run<span class="btn-mins">45 min</span></button>
 </div>
-
+ 
 <div class="btn-group-label">Strength</div>
 <div class="buttons-grid">
   <button class="log-btn" onclick="log('Lifting', 'strength', 20)">Lifting<span class="btn-mins">20 min</span></button>
@@ -298,30 +298,30 @@
   <button class="log-btn" onclick="log('Lifting', 'strength', 45)">Lifting<span class="btn-mins">45 min</span></button>
   <button class="log-btn" onclick="log('Lifting', 'strength', 60)">Lifting<span class="btn-mins">60 min</span></button>
 </div>
-
+ 
 <div class="btn-group-label">Dance Class</div>
 <div class="buttons-grid">
   <button class="log-btn" onclick="log('Dance Class', 'both', 60)">Dance Class<span class="btn-mins">60 min</span></button>
   <button class="log-btn" onclick="log('Dance Class', 'both', 90)">Dance Class<span class="btn-mins">90 min</span></button>
 </div>
-
+ 
 <div class="btn-group-label">Stretching / Mobility (optional)</div>
 <div class="buttons-grid">
   <button class="log-btn" onclick="log('Mobility', 'stretch', 10)">Mobility<span class="btn-mins">10 min</span></button>
   <button class="log-btn" onclick="log('Mobility', 'stretch', 15)">Mobility<span class="btn-mins">15 min</span></button>
 </div>
-
+ 
 <!-- THIS WEEK -->
 <div class="section-title" style="margin-top:20px">This Week</div>
 <div class="log-card" id="log-list">
   <div class="log-empty">No activity logged yet</div>
 </div>
-
+ 
 <button class="reset-btn" id="reset-btn">Reset Week</button>
-
+ 
 <script>
   const KEY = 'movement_tracker_v4';
-
+ 
   function getWeekLabel() {
     const d = new Date();
     const day = d.getDay();
@@ -331,42 +331,42 @@
     const o = { month: 'short', day: 'numeric' };
     return 'Week of ' + mon.toLocaleDateString('en-US', o) + ' \u2013 ' + sun.toLocaleDateString('en-US', o);
   }
-
+ 
   function load() {
     try {
       const raw = localStorage.getItem(KEY);
       return raw ? JSON.parse(raw) : { activities: [] };
     } catch(e) { return { activities: [] }; }
   }
-
+ 
   function save(data) {
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
   }
-
+ 
   function log(name, type, mins) {
     const data = load();
     data.activities.push({ name, type, mins, id: Date.now() });
     save(data);
     render();
   }
-
+ 
   function remove(id) {
     const data = load();
     data.activities = data.activities.filter(a => a.id !== id);
     save(data);
     render();
   }
-
+ 
   document.getElementById('reset-btn').onclick = function() {
     save({ activities: [] });
     render();
   };
-
+ 
   function render() {
     document.getElementById('week-label').textContent = getWeekLabel();
-
+ 
     const acts = load().activities;
-
+ 
     let cardio = 0, strength = 0, stretch = 0;
     acts.forEach(a => {
       if (a.type === 'cardio') cardio += a.mins;
@@ -374,24 +374,24 @@
       else if (a.type === 'stretch') stretch += a.mins;
       else if (a.type === 'both') { cardio += a.mins / 2; strength += a.mins / 2; }
     });
-
+ 
     cardio = Math.round(cardio);
     strength = Math.round(strength);
     const total = cardio + strength;
     const pct = Math.min(total / 150 * 100, 100);
     const done = total >= 150;
-
+ 
     document.getElementById('total-display').innerHTML = total + ' <span>/ 150 min</span>';
     document.getElementById('cardio-display').innerHTML = cardio + ' <span>min</span>';
     document.getElementById('strength-display').innerHTML = strength + ' <span>min</span>';
     document.getElementById('stretch-display').innerHTML = stretch + ' <span>min</span>';
-
+ 
     const bar = document.getElementById('main-bar');
     bar.style.width = pct + '%';
     bar.className = 'big-bar-fill' + (done ? ' complete' : '');
-
+ 
     document.getElementById('goal-banner').className = 'goal-banner' + (done ? ' show' : '');
-
+ 
     const list = document.getElementById('log-list');
     if (acts.length === 0) {
       list.innerHTML = '<div class="log-empty">No activity logged yet</div>';
@@ -410,7 +410,7 @@
       ).join('');
     }
   }
-
+ 
   render();
 </script>
 </body>
